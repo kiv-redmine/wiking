@@ -1,0 +1,32 @@
+<%# OVERVIEW PAGES %>
+<% overview_pages = @project.wiki.pages.where(overview: true).to_a %>
+
+<% if overview_pages.any? %>
+  <h3><%= l(:label_wiki_overview_pages) %></h3>
+
+  <% overview_pages.each do |page| %>
+    <%= link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => @project, :id => page.title, :version => nil}) -%><br />
+  <% end %>
+<% end %>
+
+<%# WATCHED PAGES %>
+<% watched_pages = @project.wiki.pages.where(id: Watcher.where(user_id: User.current.id).where(watchable_type: 'WikiPage').map(&:watchable_id)).to_a %>
+
+<% if watched_pages.any? %>
+  <h3><%= l(:label_watched_wiki_pages) %></h3>
+
+  <% watched_pages.each do |page| %>
+    <%= link_to(h(page.pretty_title), {:controller => 'wiki', :action => 'show', :project_id => @project, :id => page.title, :version => nil}) -%><br />
+  <% end %>
+<% end %>
+
+<%# CONTENT NAVIGATION %>
+<% unless @content.nil?  %>
+  <h3><%= l(:label_wiki_content) %></h3>
+  <% nodes =  Nokogiri::HTML(textilizable(@content, :text)).xpath('//h1|//h2|//h3|//h4|//h5|//h6') %>
+  <% link_href = Nokogiri::HTML(textilizable(@content, :text)).xpath('//a[@name]/@name') %>
+
+  <% nodes.each_with_index do |node,i|%>
+    <%= "<a href=\"##{link_href[i]}\" style=\"margin-left:#{nodes[i].name.delete("h").to_i*10}px;\">#{node.text.delete "¶"}</a>".html_safe %><br>
+    <%end%>
+<% end %>
