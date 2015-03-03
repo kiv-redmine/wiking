@@ -7,14 +7,14 @@ cs:
   label_custom_wiki_macro_plural: Vlastní wiki makro
   label_custom_wiki_macro_new: Nové makro
 
-  notice_custom_macro_edit: Editing the macro remember, that it may be already used!
+  notice_custom_macro_edit: Při editaci makra nezapomeňte, že makro již může být používáno!
 
   text_custom_wiki_macro_name_info: Pouze malá písmena (a-z), čísla a podtržítka jsou povolena.
   text_custom_wiki_macro_desc_info: 'Wiki syntaxe je podporována. Příklad:'
   text_custom_wiki_macro_desc_sample: Zobrazit všechna dostupná makra, včetně popisu pokud je dostupný.
   text_custom_wiki_macro_content_info: 'HTML je podporováno, syntaxe pro argumenty:'
-  text_custom_wiki_macro_named_argument: '%{name} - named argument specified using: name=value.'
-  text_custom_wiki_macro_unnamed_argument: '%[1] - unnamed argument specified as just value.'
+  text_custom_wiki_macro_named_argument: '%{name} - použití pojmenovaných argumentů: name=value.'
+  text_custom_wiki_macro_unnamed_argument: '%[1] - nepojmenovaný argumet je specifikován hodnotou.'
   text_custom_wiki_macro_body: '%(*) - tělo makra.'
 
   label_mentions: Označení

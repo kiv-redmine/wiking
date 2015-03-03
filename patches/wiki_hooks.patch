@@ -1,0 +1,23 @@
+diff -ur ../redmine-2.5.3-2/app/views/wiki/edit.html.erb ./app/views/wiki/edit.html.erb
+--- ../redmine-2.5.3-2/app/views/wiki/edit.html.erb	2014-10-21 13:10:50.000000000 +0200
++++ ./app/views/wiki/edit.html.erb	2015-03-03 10:59:51.000000000 +0100
+@@ -26,6 +26,7 @@
+                          @wiki.pages.includes(:parent).all -
+                          @page.self_and_descendants, @page.parent) %>
+     </p>
++    <%= call_hook(:view_wiki_form_bottom, { :page => @page, :form => fp, :content => @content }) %>
+   <% end %>
+ <% end %>
+ 
+diff -ur ../redmine-2.5.3-2/app/views/wiki/show.html.erb ./app/views/wiki/show.html.erb
+--- ../redmine-2.5.3-2/app/views/wiki/show.html.erb	2014-10-21 13:10:50.000000000 +0200
++++ ./app/views/wiki/show.html.erb	2015-03-03 11:00:22.000000000 +0100
+@@ -69,6 +69,7 @@
+ <% end if User.current.allowed_to?(:export_wiki_pages, @project) %>
+ 
+ <% content_for :sidebar do %>
++  <%= call_hook(:view_wiki_sidebar_top, {:page => @page}) %>
+   <%= render :partial => 'sidebar' %>
+ <% end %>
+ 
+Only in ./: wiking.patch
