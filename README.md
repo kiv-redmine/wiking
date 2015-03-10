@@ -1,8 +1,9 @@
 Wiking
 ======
 
-This is unofficall!! mirror of svn wiking repository, with
-modifications!
+This is unoficial!! mirror of svn wiking repository, with
+modifications! It probably wont be updated from official
+SVN repository!
 
 Plugin installation
 -------------------
